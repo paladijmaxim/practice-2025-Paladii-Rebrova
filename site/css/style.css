@@ -1,0 +1,136 @@
+/* общие стили */
+
+@font-face {
+    font-family: "Jost-Regular";
+    src: url("../fonts/Jost-Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Jost-Semibold";
+    src: url("../fonts/Jost-SemiBold.ttf");
+    font-style: normal;
+    font-weight: 600;
+}
+
+:root {
+    --white-color: #ffffff;
+    --dark-color: #141024;
+    --red-color: #D52027;
+    --blue-color: #3953FF;
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* стили header */
+
+header {
+    background-color: var(--white-color);
+}
+
+.header_wrapper {
+    max-width: 192rem;
+    padding-top: 3.3rem;
+    padding-bottom: 3rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.header_item_link {
+    font-family: "Jost-Regular";
+    font-size: 2.4rem;
+    line-height: 160%;
+    color: var(--dark-color);
+}
+
+.header_item_link:hover {
+    border: 2px solid var(--blue-color);
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+.header_list {
+    display: flex;
+    gap: 5.3rem;
+    margin: 0;
+    padding: 0;
+}
+
+/* стили main */
+
+main {
+    background-color: var(--dark-color);
+}
+
+.wrapper {
+    max-width: 192rem;
+    margin: 0 auto;
+    padding: 5rem 11.5rem 11.8rem 16.9rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+h1 {
+    font-family: "Jost-Semibold";
+    font-size: 6.6rem;
+    line-height: 160%;
+    color: var(--white-color);
+    margin-top: 0;
+    max-width: 137.1rem;
+    margin-bottom: 6.1rem;
+}
+
+.link {
+    color: var(--white-color);
+    background-color: var(--red-color);
+    font-family: "Jost-Regular";
+    font-size: 2.8rem;
+    line-height: 160%;
+    padding: 2.5rem 5.4rem;
+    max-width: 38.1rem;
+    min-height: 9.5rem;
+    position: relative;
+    bottom: 34.2rem;
+}
+
+.link:hover {
+    color: var(--red-color);
+    background-color: var(--white-color);
+    border: 1px solid var(--red-color);
+    max-height: 9.5rem;
+}
+
+.text {
+    font-family: "Jost-Regular";
+    font-size: 3.2rem;
+    line-height: 160%;
+    color: var(--white-color);
+    max-width: 89.5rem;
+    align-self: flex-end;
+    margin-top: 0;
+    margin-bottom: 8rem;
+}
+
+.text_text {
+    font-family: "Jost-Regular";
+    font-size: 3.2rem;
+    line-height: 160%;
+    color: var(--white-color);
+    max-width: 89.5rem;
+    align-self: flex-end;
+    margin: 0;
+}
