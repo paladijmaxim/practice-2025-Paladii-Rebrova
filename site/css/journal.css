@@ -1,0 +1,172 @@
+/* общие стили */
+
+@font-face {
+    font-family: "Jost-Regular";
+    src: url("../fonts/Jost-Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Jost-Semibold";
+    src: url("../fonts/Jost-SemiBold.ttf");
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Jost-Bold";
+    src: url("../fonts/Jost-Bold.ttf");
+    font-style: normal;
+    font-weight: 700;
+}
+
+:root {
+    --white-color: #ffffff;
+    --dark-color: #141024;
+    --red-color: #D52027;
+    --blue-color: #3953FF;
+    --grey-color: #c5b3b3b8;
+    --light_blue-color: #A7B4FD;
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* стили header */
+
+header {
+    background-color: var(--white-color);
+}
+
+.header_wrapper {
+    max-width: 192rem;
+    padding-top: 3.3rem;
+    padding-bottom: 3rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.header_item_link {
+    font-family: "Jost-Regular";
+    font-size: 2.4rem;
+    line-height: 160%;
+    color: var(--dark-color);
+}
+
+.header_item_link:hover {
+    border: 2px solid var(--blue-color);
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+.header_list {
+    display: flex;
+    gap: 5.3rem;
+    margin: 0;
+    padding: 0;
+}
+
+/* стили для main */
+
+.wrapper {
+    max-width: 192rem;
+    margin: 0 auto;
+    padding: 8.6rem 17rem 5.8rem 17rem;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    display: none;
+}
+
+main {
+    background-color: var(--dark-color);
+}
+
+.card_img {
+    display: block;
+}
+
+.img_box {
+    background-color: var(--light_blue-color);
+    max-width: 74rem;
+    min-height: 64.9rem;
+}
+
+.text_box {
+    background-color: var(--white-color);
+    padding: 2.6rem 4.4rem 2.5rem 3.3rem;
+    min-width: 74rem;
+    min-height: 47.3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card_title {
+    font-family: "Jost-Bold";
+    font-size: 3.4rem;
+    line-height: 100%;
+    color: var(--dark-color);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+hr {
+    max-width: 67.4rem;
+    color: var(--grey-color);
+    margin: 1rem 0 2.6rem 0;
+}
+
+.text {
+    font-family: "Jost-Regular";
+    font-size: 1.8rem;
+    line-height: 100%;
+    color: var(--dark-color);
+}
+
+.data {
+    font-family: "Jost-Regular";
+    font-size: 1.8rem;
+    line-height: 100%;
+    color: var(--dark-color);
+    position: relative;
+    align-self: flex-end;
+    margin-top: auto;
+}
+
+.card_list {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.link {
+    color: var(--white-color);
+    background-color: var(--red-color);
+    font-family: "Jost-Regular";
+    font-size: 2.8rem;
+    line-height: 160%;
+    padding: 2.5rem 5.4rem;
+    align-self: center;
+    margin-top: 8.9rem;
+}
+
+.link:hover {
+    color: var(--red-color);
+    background-color: var(--white-color);
+    border: 1px solid var(--red-color);
+}
