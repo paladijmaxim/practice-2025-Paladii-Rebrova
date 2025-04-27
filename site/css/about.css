@@ -1,0 +1,207 @@
+/* общие стили */
+
+@font-face {
+    font-family: "Jost-Regular";
+    src: url("../fonts/Jost-Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Jost-Semibold";
+    src: url("../fonts/Jost-SemiBold.ttf");
+    font-style: normal;
+    font-weight: 600;
+}
+
+:root {
+    --white-color: #ffffff;
+    --dark-color: #141024;
+    --red-color: #D52027;
+    --blue-color: #3953FF;
+    --grey-color: #CDCACA;
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* стили header */
+
+header {
+    background-color: var(--white-color);
+}
+
+.header_wrapper {
+    max-width: 192rem;
+    padding-top: 3.3rem;
+    padding-bottom: 3rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.header_item_link {
+    font-family: "Jost-Regular";
+    font-size: 2.4rem;
+    line-height: 160%;
+    color: var(--dark-color);
+}
+
+.header_item_link:hover {
+    border: 2px solid var(--blue-color);
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+.header_list {
+    display: flex;
+    gap: 5.3rem;
+    margin: 0;
+    padding: 0;
+}
+
+/* стили для section objectives */
+
+.wrapper {
+    max-width: 192rem;
+    margin: 0 auto;
+    padding: 0 33.1rem;
+    position: relative;
+}
+
+.title_box {
+    background-color: var(--dark-color);
+    position: relative;
+    padding-left: 33.1rem; 
+    right: 33.1rem;
+    min-width: 192rem;
+}
+
+h1 {
+    font-family: "Jost-Semibold";
+    font-size: 5.4rem;
+    line-height: 160%;
+    color: var(--white-color);
+    text-align: center;
+    max-width: 125.8rem;
+    padding-top: 6.5rem;
+    padding-bottom: 9.4rem;
+    margin: 0;
+}
+
+.title_style {
+    color: var(--red-color);
+}
+
+.objectives {
+    background-color: var(--white-color);
+}
+
+.objectives_title {
+    font-family: "Jost-Semibold";
+    font-size: 5rem;
+    line-height: 160%;
+    color: var(--white-color);
+    background-color: var(--dark-color);
+    max-width: 15.3rem;
+    border-radius: 1.2rem;
+    padding-left: 1.3rem;
+    padding-right: 1.4rem;
+    padding-bottom: 0.5rem;
+    margin: 7.2rem 0 2.2rem;
+}
+
+.objectives_title_title {
+    font-family: "Jost-Semibold";
+    font-size: 5rem;
+    line-height: 160%;
+    color: var(--white-color);
+    background-color: var(--dark-color);
+    max-width: 20.2rem;
+    border-radius: 1.2rem;
+    padding-left: 1.3rem;
+    padding-right: 1.4rem;
+    padding-bottom: 0.5rem;
+    margin: 0 0 2.6rem;
+}
+
+.objectives_text {
+    font-family: "Jost-Regular";
+    font-size: 2.4rem;
+    line-height: 160%;
+    color: var(--dark-color);
+    margin: 0 0 6.3rem;
+}
+
+.objectives_list {
+    margin: 0 0 8.4rem;
+    list-style-type: disc;
+    padding-left: 2.2rem;
+}
+
+.objectives_item_text {
+    font-family: "Jost-Regular";
+    font-size: 2.4rem;
+    line-height: 160%;
+    color: var(--dark-color);
+    margin-bottom: 0;
+    margin-top: 0.7rem;
+}
+
+.objectives_item::marker {
+    color: var(--red-color);
+    font-size: 3em;
+}
+
+.result {
+    background-color: var(--grey-color);
+}
+
+.result_title {
+    font-family: "Jost-Semibold";
+    font-size: 5rem;
+    line-height: 160%;
+    color: var(--dark-color);
+    padding-top: 9.2rem;
+    min-width: 124.5rem;
+    margin-top: 0;
+    margin-bottom: 3.3rem;
+}
+
+.result_item_title {
+    font-family: "Jost-Semibold";
+    font-size: 2.4rem;
+    line-height: 160%;
+    color: var(--dark-color);
+    margin: 0;
+    max-width: 35rem;
+}
+
+.result_item_text {
+    font-family: "Jost-Regular";
+    font-size: 1.8rem;
+    line-height: 160%;
+    color: var(--dark-color);
+    margin-top: 0.9rem;
+    margin-bottom: 0;
+    max-width: 36rem;
+}
+
+.result_list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 10.8rem;
+}
