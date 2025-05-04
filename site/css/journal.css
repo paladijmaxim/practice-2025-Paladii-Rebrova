@@ -92,7 +92,7 @@ h1 {
     display: none;
 }
 
-main {
+body {
     background-color: var(--dark-color);
 }
 

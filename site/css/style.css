@@ -73,7 +73,7 @@ header {
 
 /* стили main */
 
-main {
+body {
     background-color: var(--dark-color);
 }
 

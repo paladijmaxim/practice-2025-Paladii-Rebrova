@@ -40,7 +40,7 @@ ul {
 
 .students_title {
     text-transform: uppercase;
-    color: red;
+    color: var(--red-color);
     font-size: 5.4rem;
     padding-top: 65px;
 }
