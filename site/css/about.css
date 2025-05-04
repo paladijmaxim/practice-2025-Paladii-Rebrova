@@ -72,31 +72,32 @@ header {
 
 /* стили для section objectives */
 
-.wrapper {
+.wrapper_about {
     max-width: 192rem;
     margin: 0 auto;
-    padding: 0 33.1rem;
+    padding: 0 33.1rem 5.3rem;
     position: relative;
 }
 
 .title_box {
     background-color: var(--dark-color);
     position: relative;
-    padding-left: 33.1rem; 
-    right: 33.1rem;
     min-width: 192rem;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dark-color); 
 }
 
-h1 {
+.title_main {
     font-family: "Jost-Semibold";
     font-size: 5.4rem;
     line-height: 160%;
     color: var(--white-color);
-    text-align: center;
     max-width: 125.8rem;
-    padding-top: 6.5rem;
-    padding-bottom: 9.4rem;
-    margin: 0;
+    padding: 6.5rem 0 9.4rem;
+    margin: 0 auto;
 }
 
 .title_style {

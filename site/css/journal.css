@@ -80,7 +80,7 @@ header {
 
 /* стили для main */
 
-.wrapper {
+.wrapper_journal {
     max-width: 192rem;
     margin: 0 auto;
     padding: 8.6rem 17rem 5.8rem 17rem;
@@ -130,7 +130,7 @@ hr {
     margin: 1rem 0 2.6rem 0;
 }
 
-.text {
+.text_card {
     font-family: "Jost-Regular";
     font-size: 1.8rem;
     line-height: 100%;
@@ -154,7 +154,7 @@ hr {
     padding: 0;
 }
 
-.link {
+.link_journal {
     color: var(--white-color);
     background-color: var(--red-color);
     font-family: "Jost-Regular";
