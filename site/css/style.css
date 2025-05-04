@@ -137,7 +137,7 @@ h1 {
     margin: 0;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1919px) {
     .header_wrapper {
         max-width: 144rem;
         padding-top: 2.4rem;
@@ -166,7 +166,7 @@ h1 {
 
     .wrapper {
         max-width: 144rem;
-        padding: 5.7rem 13.3rem 22.8rem 13.3rem;
+        padding: 5.7rem 13.3rem 13.8rem 13.3rem;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -189,7 +189,7 @@ h1 {
         padding: 2rem 1.45rem;
         max-width: 24.3rem;
         min-height: 7.5rem;
-        bottom: 37rem;
+        bottom: 30rem;
         color: var(--white-color);
         background-color: var(--red-color);
         font-family: "Jost-Regular";
