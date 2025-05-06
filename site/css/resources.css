@@ -1,7 +1,8 @@
 .section__wrapper {
     max-width: 1572px;
     margin: 0 auto;
-    margin-bottom: 40px;
+    margin-bottom: 140px;
+    margin-top: 54px;
 }
 
 .section_title {
@@ -9,7 +10,6 @@
     text-transform: uppercase;
     font-family: 'Jost-Semibold';
     font-size: 5.4rem;
-    margin-top: 6.5rem;
     margin-bottom: 0;
 }
 
@@ -23,7 +23,7 @@
     display: inline-block;
     text-transform: uppercase;
     padding: 14px;
-    margin-top: 54px;
+    margin-top: 44px;
 }
 
 .section_two-title-analogue {
@@ -44,16 +44,20 @@
 }
 
 .text_about {
-    font-size: 1.8rem;
+    font-size: 2.4rem;
     color: white;
     font-family: 'Jost-Regular';
+    line-height: 160%;
+    margin: 0;
     margin-left: 8px;
 }
 
 .link-after-text {
-    font-size: 1.8rem;
+    font-size: 2.4rem;
     color: white;
     font-family: 'Jost-Regular';
+    line-height: 160%;
+    margin: 0;
     margin-left: 8px;
     text-decoration: underline;
 }
@@ -67,11 +71,12 @@
     .section__wrapper {
         max-width: 1174px;
         margin: 0 auto;
+        margin-bottom: 110px;
+        margin-top: 52px;
     }
     
     .section_title {
         font-size: 4.2rem;
-        margin-top: 7.5rem;
         margin-bottom: 0;
     }
     
@@ -79,7 +84,7 @@
         font-size: 2rem;
         font-family: 'Jost-Semibold';
         padding: 14px;
-        margin-top: 54px;
+        margin-top: 33px;
     }
     
     .section_two-title-analogue {
@@ -90,18 +95,10 @@
         margin-top: 49px;
     }
     
-    .wrapper-for-text {
-        line-height: 1.2;
-    }
-    
     .text_about {
-        font-size: 1.8rem;
+        font-size: 2.4rem;
         margin-left: 8px;
-    }
-    
-    .link-after-text {
-        font-size: 1.8rem;
-        margin-left: 8px;
-        text-decoration: underline;
+        font-family: 'Jost-Regular';
+        line-height: 160%;
     }
 }
