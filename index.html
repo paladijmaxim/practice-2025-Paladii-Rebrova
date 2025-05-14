@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный план эвакуации</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #d32f2f;
+        }
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(20, 30px);
+            grid-template-rows: repeat(20, 30px);
+            gap: 1px;
+            margin: 20px auto;
+            width: fit-content;
+            background-color: #333;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .cell {
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .wall {
+            background-color: #795548;
+            color: white;
+        }
+        .exit {
+            background-color: #4caf50;
+            color: white;
+        }
+        .player {
+            background-color: #2196f3;
+            color: white;
+            border-radius: 50%;
+        }
+        .arrow {
+            background-color: #ffeb3b;
+        }
+        .fire-extinguisher {
+            background-color: #f44336;
+            color: white;
+        }
+        .alarm {
+            background-color: #9c27b0;
+            color: white;
+        }
+        .hydrant {
+            background-color: #ff9800;
+            color: white;
+        }
+        .phone {
+            background-color: #00bcd4;
+            color: white;
+        }
+        .controls {
+            margin: 20px;
+        }
+        button {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #b71c1c;
+        }
+        .instructions {
+            background-color: #ffeb3b;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .emergency-info {
+            background-color: #d32f2f;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px auto;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <h1>План эвакуации - ул. Прянишникова, д. 2А</h1>
+    <p>Цокольный этаж</p>
+    
+    <div class="instructions">
+        <h3>Инструкция:</h3>
+        <p>1. Нажмите "Начать эвакуацию" для автоматического прохождения маршрута</p>
+        <p>2. Следуйте указанным направлениям (стрелкам)</p>
+        <p>3. Обратите внимание на важные точки эвакуации</p>
+    </div>
+    
+    <div id="grid"></div>
+    
+    <div class="emergency-info">
+        <h3>Важные точки эвакуации:</h3>
+        <p><span style="background-color: #f44336; padding: 3px 6px; border-radius: 3px; color: white;">■</span> Огнетушитель</p>
+        <p><span style="background-color: #9c27b0; padding: 3px 6px; border-radius: 3px; color: white;">■</span> Кнопка тревоги</p>
+        <p><span style="background-color: #ff9800; padding: 3px 6px; border-radius: 3px; color: white;">■</span> Пожарный кран</p>
+        <p><span style="background-color: #00bcd4; padding: 3px 6px; border-radius: 3px; color: white;">■</span> Телефон</p>
+        <p><span style="background-color: #4caf50; padding: 3px 6px; border-radius: 3px; color: white;">■</span> Эвакуационный выход</p>
+    </div>
+    
+    <div class="controls">
+        <button id="startBtn">Начать эвакуацию</button>
+        <button id="resetBtn">Сбросить</button>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const grid = document.getElementById('grid');
+            const startBtn = document.getElementById('startBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            
+            const ROWS = 20;
+            const COLS = 20;
+            let playerPosition = { x: 3, y: 15 }; // Начальная позиция в цокольном этаже
+            let exitPosition = { x: 18, y: 2 };   // Выход на улицу
+            let path = [];
+            let isGameStarted = false;
+            
+            // Создаем план помещения
+            function createBuilding() {
+                grid.innerHTML = '';
+                
+                // Создаем все ячейки
+                for (let y = 0; y < ROWS; y++) {
+                    for (let x = 0; x < COLS; x++) {
+                        const cell = document.createElement('div');
+                        cell.classList.add('cell');
+                        
+                        // Внешние стены
+                        if (x === 0 || y === 0 || x === COLS-1 || y === ROWS-1) {
+                            cell.classList.add('wall');
+                        } 
+                        // Выход
+                        else if (x === exitPosition.x && y === exitPosition.y) {
+                            cell.classList.add('exit');
+                            cell.textContent = 'Выход';
+                        }
+                        // Игрок
+                        else if (x === playerPosition.x && y === playerPosition.y) {
+                            cell.classList.add('player');
+                        }
+                        // Пути
+                        else {
+                            cell.classList.add('path');
+                        }
+                        
+                        grid.appendChild(cell);
+                    }
+                }
+                
+                // Добавляем внутренние стены (планировка цокольного этажа)
+                addWalls();
+                
+                // Добавляем важные точки эвакуации
+                addEmergencyPoints();
+                
+                // Генерируем путь эвакуации
+                generateEvacuationPath();
+            }
+            
+            function addWalls() {
+                // Основные стены коридоров
+                addWall(5, 2, 15, 2);  // Верхняя стена
+                addWall(5, 18, 15, 18); // Нижняя стена
+                addWall(5, 2, 5, 18);   // Левая стена
+                addWall(15, 2, 15, 18); // Правая стена
+                
+                // Внутренние перегородки
+                addWall(8, 2, 8, 8);
+                addWall(12, 2, 12, 8);
+                addWall(8, 12, 8, 18);
+                addWall(12, 12, 12, 18);
+                
+                // Горизонтальные перегородки
+                addWall(5, 8, 8, 8);
+                addWall(12, 8, 15, 8);
+                addWall(5, 12, 8, 12);
+                addWall(12, 12, 15, 12);
+            }
+            
+            function addWall(x1, y1, x2, y2) {
+                // Горизонтальная стена
+                if (y1 === y2) {
+                    for (let x = x1; x <= x2; x++) {
+                        const index = y1 * COLS + x;
+                        if (index < grid.children.length) {
+                            grid.children[index].classList.add('wall');
+                            grid.children[index].classList.remove('path');
+                        }
+                    }
+                }
+                // Вертикальная стена
+                else if (x1 === x2) {
+                    for (let y = y1; y <= y2; y++) {
+                        const index = y * COLS + x1;
+                        if (index < grid.children.length) {
+                            grid.children[index].classList.add('wall');
+                            grid.children[index].classList.remove('path');
+                        }
+                    }
+                }
+            }
+            
+            function addEmergencyPoints() {
+                // Огнетушители
+                addPoint(6, 5, 'fire-extinguisher', 'Огнет.');
+                addPoint(14, 5, 'fire-extinguisher', 'Огнет.');
+                addPoint(6, 15, 'fire-extinguisher', 'Огнет.');
+                addPoint(14, 15, 'fire-extinguisher', 'Огнет.');
+                
+                // Кнопки тревоги
+                addPoint(7, 10, 'alarm', 'Тревога');
+                addPoint(13, 10, 'alarm', 'Тревога');
+                
+                // Пожарные краны
+                addPoint(10, 3, 'hydrant', 'Кран');
+                addPoint(10, 17, 'hydrant', 'Кран');
+                
+                // Телефоны
+                addPoint(3, 10, 'phone', '101/112');
+                addPoint(17, 10, 'phone', '101/112');
+            }
+            
+            function addPoint(x, y, className, text) {
+                const index = y * COLS + x;
+                if (index < grid.children.length) {
+                    grid.children[index].classList.add(className);
+                    grid.children[index].textContent = text;
+                    grid.children[index].classList.remove('path');
+                }
+            }
+            
+            function generateEvacuationPath() {
+                // Очищаем предыдущий путь
+                path.forEach(pos => {
+                    const index = pos.y * COLS + pos.x;
+                    if (grid.children[index].classList.contains('arrow')) {
+                        grid.children[index].classList.remove('arrow');
+                        grid.children[index].textContent = '';
+                        grid.children[index].classList.add('path');
+                    }
+                });
+                
+                path = [];
+                
+                // Генерируем путь от игрока к выходу (реалистичный маршрут)
+                let currentX = playerPosition.x;
+                let currentY = playerPosition.y;
+                
+                // Маршрут через коридоры
+                // 1. Выходим из комнаты в коридор
+                while (currentY > 10) {
+                    currentY--;
+                    path.push({ x: currentX, y: currentY });
+                }
+                
+                // 2. Двигаемся к центральному коридору
+                if (currentX < 10) {
+                    while (currentX < 10) {
+                        currentX++;
+                        path.push({ x: currentX, y: currentY });
+                    }
+                } else {
+                    while (currentX > 10) {
+                        currentX--;
+                        path.push({ x: currentX, y: currentY });
+                    }
+                }
+                
+                // 3. Поднимаемся по центральному коридору
+                while (currentY > 2) {
+                    currentY--;
+                    path.push({ x: currentX, y: currentY });
+                }
+                
+                // 4. Двигаемся к выходу
+                while (currentX < exitPosition.x) {
+                    currentX++;
+                    path.push({ x: currentX, y: currentY });
+                }
+                
+                // Добавляем стрелки направления
+                for (let i = 0; i < path.length - 1; i++) {
+                    const current = path[i];
+                    const next = path[i+1];
+                    let direction = '';
+                    
+                    if (next.x > current.x) direction = '→';
+                    else if (next.x < current.x) direction = '←';
+                    else if (next.y > current.y) direction = '↓';
+                    else if (next.y < current.y) direction = '↑';
+                    
+                    const index = current.y * COLS + current.x;
+                    if (!grid.children[index].classList.contains('fire-extinguisher') &&
+                        !grid.children[index].classList.contains('alarm') &&
+                        !grid.children[index].classList.contains('hydrant') &&
+                        !grid.children[index].classList.contains('phone')) {
+                        grid.children[index].classList.add('arrow');
+                        grid.children[index].classList.remove('path');
+                        grid.children[index].textContent = direction;
+                    }
+                }
+            }
+            
+            function startEvacuation() {
+                if (isGameStarted) return;
+                isGameStarted = true;
+                
+                let step = 0;
+                const playerIndex = playerPosition.y * COLS + playerPosition.x;
+                grid.children[playerIndex].classList.add('player');
+                
+                const interval = setInterval(() => {
+                    if (step >= path.length) {
+                        clearInterval(interval);
+                        alert('Вы успешно эвакуировались! Помните:\n1. Звоните 101 или 112\n2. Не пользуйтесь лифтом\n3. Помогайте другим при возможности');
+                        isGameStarted = false;
+                        return;
+                    }
+                    
+                    // Убираем игрока с предыдущей позиции
+                    const prevIndex = playerPosition.y * COLS + playerPosition.x;
+                    grid.children[prevIndex].classList.remove('player');
+                    
+                    // Перемещаем игрока
+                    playerPosition = { ...path[step] };
+                    const newIndex = playerPosition.y * COLS + playerPosition.x;
+                    grid.children[newIndex].classList.add('player');
+                    
+                    // Показываем информацию о точке эвакуации, если игрок на ней
+                    showPointInfo(newIndex);
+                    
+                    step++;
+                }, 500);
+            }
+            
+            function showPointInfo(index) {
+                const cell = grid.children[index];
+                let message = '';
+                
+                if (cell.classList.contains('fire-extinguisher')) {
+                    message = 'Огнетушитель:\n1. Сорвите пломбу\n2. Выдерните чеку\n3. Направьте на огонь\n4. Нажмите рычаг';
+                } else if (cell.classList.contains('alarm')) {
+                    message = 'Кнопка тревоги:\nНажмите для активации системы оповещения';
+                } else if (cell.classList.contains('hydrant')) {
+                    message = 'Пожарный кран:\n1. Раскатайте рукав\n2. Откройте вентиль\n3. Направьте на огонь';
+                } else if (cell.classList.contains('phone')) {
+                    message = 'Телефон экстренной связи:\nЗвоните 101 или 112\nСообщите:\n- Адрес\n- Этаж\n- Что горит\n- Ваше имя';
+                }
+                
+                if (message) {
+                    alert(message);
+                }
+            }
+            
+            startBtn.addEventListener('click', startEvacuation);
+            resetBtn.addEventListener('click', () => {
+                playerPosition = { x: 3, y: 15 };
+                isGameStarted = false;
+                createBuilding();
+            });
+
+            createBuilding();
+        });
+    </script>
+</body>
+</html>
