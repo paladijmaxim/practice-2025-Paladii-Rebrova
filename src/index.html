@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эвакуация: Интерактивый план</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>План эвакуации 2 этажа корпуса 2 ул. Прянишникова 2А</h1>
+    <div class="controls">
+        <select id="room-select">
+            <optgroup label="Верхний ряд">
+                <option value="2201M">2201M</option>
+                <option value="2201">2201</option>
+                <option value="2203">2203</option>
+                <option value="2204">2204</option>
+                <option value="2205">2205</option>
+                <option value="2206">2206</option>
+            </optgroup>
+            <optgroup label="Нижний ряд">
+                <option value="2214">2214</option>
+                <option value="2210">2210</option>
+                <option value="2202B">2202Б</option>
+                <option value="2202A">2202А</option>
+                <option value="elevator">Лифт</option>
+                <option value="2209">2209</option>
+                <option value="2208A">2208А</option>
+                <option value="2208">2208</option>
+                <option value="2207">2207</option>
+                <option value="toilet">С/у</option>
+            </optgroup>
+        </select>
+        <button id="start-btn">Начать эвакуацию</button>
+        <button id="reset-btn">Сбросить</button>
+    </div>
+
+    <div class="game-container" id="game-container">
+
+        <div class="room exit" style="top: 20px; left: 50px;" data-room="exit1">Выход</div>
+        <div class="room" style="top: 20px; left: 150px;" data-room="2201M">2201M</div>
+        <div class="room" style="top: 20px; left: 250px;" data-room="2201">2201</div>
+        <div class="room" style="top: 20px; left: 350px;" data-room="2203">2203</div>
+        <div class="room" style="top: 20px; left: 450px;" data-room="2204">2204</div>
+        <div class="room" style="top: 20px; left: 550px;" data-room="2205">2205</div>
+        <div class="room" style="top: 20px; left: 650px;" data-room="2206">2206</div>
+        <div class="room exit" style="top: 20px; left: 750px;" data-room="exit2">Выход</div>
+        
+        <div class="corridor" style="top: 170px;">
+            <div class="corridor-segment" data-segment="0"></div>
+            <div class="corridor-segment" data-segment="1"></div>
+            <div class="corridor-segment" data-segment="2"></div>
+            <div class="corridor-segment" data-segment="3"></div>
+            <div class="corridor-segment" data-segment="4"></div>
+            <div class="corridor-segment" data-segment="5"></div>
+        </div>
+        
+        <div class="room" style="top: 300px; left: 50px;" data-room="2214">2214</div>
+        <div class="room" style="top: 300px; left: 150px;" data-room="2210">2210</div>
+        <div class="room" style="top: 300px; left: 250px;" data-room="2202B">2202Б</div>
+        <div class="room" style="top: 300px; left: 350px;" data-room="2202A">2202А</div>
+        <div class="room elevator" style="top: 300px; left: 450px;" data-room="elevator">Лифт</div>
+        <div class="room" style="top: 300px; left: 550px;" data-room="2209">2209</div>
+        <div class="room" style="top: 300px; left: 650px;" data-room="2208A">2208А</div>
+        <div class="room" style="top: 300px; left: 750px;" data-room="2208">2208</div>
+        <div class="room" style="top: 300px; left: 850px;" data-room="2207">2207</div>
+        <div class="room toilet" style="top: 300px; left: 950px;" data-room="toilet">С/у</div>
+    </div>
+    <div id="info-panel">
+        <p>Выберите аудиторию и нажмите "Начать эвакуацию". Змейка покажет путь к ближайшему выходу.</p>
+        <div id="route-info"></div>
+    </div>
+<script src = 'main.js'></script>
+</body>
+</html>
