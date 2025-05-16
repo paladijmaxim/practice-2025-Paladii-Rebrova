@@ -47,7 +47,7 @@ button:hover {
 }
 .game-container {
     position: relative;
-    width: 800px;
+    width: 1000px;
     height: 400px;
     background: #fff;
     border: 2px solid #333;
@@ -84,6 +84,15 @@ button:hover {
 .toilet {
     background: #795548;
 }
+.electrical {
+    background: #FF5722;
+}
+.stairs {
+    background: #607D8B;
+}
+.empty {
+    background: #BDBDBD;
+}
 .corridor {
     position: absolute;
     left: 0;
@@ -119,7 +128,7 @@ button:hover {
     background: white;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    max-width: 800px;
+    max-width: 1000px;
     width: 100%;
 }
 @keyframes pulse {
