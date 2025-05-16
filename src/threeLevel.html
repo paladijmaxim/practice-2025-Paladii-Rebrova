@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эвакуация: Интерактивный план</title>
+    <link rel="stylesheet" href="threeLevel.css">
+</head>
+<body>
+    <h1>План эвакуации 3 этажа</h1>
+    <div class="controls">
+        <select id="room-select">
+            <option value="">Выберите помещение</option>
+            <option value="2307">2307</option>
+            <option value="2306">2306</option>
+            <option value="2305">2305</option>
+            <option value="elevator">Лифты и лестница</option>
+            <option value="2304">2304</option>
+            <option value="2303">2303</option>
+            <option value="cafe">Кафе</option>
+            <option value="toilet">С/у</option>
+        </select>
+        <button id="start-btn">Начать эвакуацию</button>
+        <button id="reset-btn">Сбросить</button>
+    </div>
+
+    <div class="game-container" id="game-container">
+        <!-- Коридор с выходами по бокам -->
+        <div class="corridor">
+            <div class="exit stairs" style="left: 0;" data-room="exit1">Лестница</div>
+            <div class="corridor-segment" data-segment="0"></div>
+            <div class="corridor-segment" data-segment="1"></div>
+            <div class="corridor-segment" data-segment="2"></div>
+            <div class="corridor-segment" data-segment="3"></div>
+            <div class="corridor-segment" data-segment="4"></div>
+            <div class="corridor-segment" data-segment="5"></div>
+            <div class="exit stairs" style="right: 0;" data-room="exit2">Лестница</div>
+        </div>
+        
+        <!-- Ряд помещений -->
+        <div class="room" style="top: 250px; left: 50px;" data-room="2307">2307</div>
+        <div class="room" style="top: 250px; left: 150px;" data-room="2306">2306</div>
+        <div class="room" style="top: 250px; left: 250px;" data-room="2305">2305</div>
+        <div class="room elevator" style="top: 250px; left: 350px;" data-room="elevator">Лифты и лестница</div>
+        <div class="room" style="top: 250px; left: 450px;" data-room="2304">2304</div>
+        <div class="room" style="top: 250px; left: 550px;" data-room="2303">2303</div>
+        <div class="room cafe" style="top: 250px; left: 650px;" data-room="cafe">Кафе</div>
+        <div class="room toilet" style="top: 250px; left: 750px;" data-room="toilet">С/у</div>
+    </div>
+    <div id="info-panel">
+        <p>Выберите помещение и нажмите "Начать эвакуацию". Змейка покажет путь к ближайшему выходу.</p>
+        <div id="route-info"></div>
+    </div>
+    <script src="threeLevel.js"></script>
+</body>
+</html>
