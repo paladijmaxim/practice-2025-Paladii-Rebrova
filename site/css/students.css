@@ -1,0 +1,105 @@
+@font-face {
+    font-family: "Jost-Regular";
+    src: url("../fonts/Jost-Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Jost-Semibold";
+    src: url("../fonts/Jost-SemiBold.ttf");
+    font-style: normal;
+    font-weight: 600;
+}
+
+:root {
+    --white-color: #ffffff;
+    --dark-color: #141024;
+    --red-color: #D52027;
+    --blue-color: #3953FF;
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.contanier-main {
+    max-width: 1224px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+.students_title {
+    text-transform: uppercase;
+    color: var(--red-color);
+    font-size: 5.4rem;
+    padding-top: 65px;
+}
+
+.students_title_span {
+    color: white;
+}
+
+.section-wrapper_students--grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 12.2rem;
+}
+
+.section-students--grid {
+    background-color: white;
+    color: white;
+    border-radius: 4.8rem;
+    padding: 53px 42px;
+}
+
+.section-students--grid_name-students {
+    color: #141024;
+    font-size: 2.6rem;
+    font-family: "Jost-Semibold";
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+.section-students--grid_text-students {
+    color: #3953FF;
+    font-size: 2.4rem;
+    font-family: "Jost-Regular";
+}
+
+@media (max-width: 1440px) {
+    .contanier-main {
+        max-width: 1100px;
+        padding: 0 20px 50px;
+    }
+    
+    .students_title {
+        font-size: 4.2rem;
+        padding-top: 50px;
+    }
+    
+    .section-wrapper_students--grid {
+        column-gap: 8rem;
+    }
+    
+    .section-students--grid {
+        padding: 40px 35px;
+    }
+    
+    .section-students--grid_name-students {
+        font-size: 2.4rem;
+    }
+    
+    .section-students--grid_text-students {
+        font-size: 2.1rem;
+    }
+}

@@ -1,0 +1,104 @@
+.section__wrapper {
+    max-width: 1572px;
+    margin: 0 auto;
+    margin-bottom: 140px;
+    margin-top: 54px;
+}
+
+.section_title {
+    color: #D52027;
+    text-transform: uppercase;
+    font-family: 'Jost-Semibold';
+    font-size: 5.4rem;
+    margin-bottom: 0;
+}
+
+.section_two-title {
+    color: #141024;
+    font-size: 2rem;
+    font-family: 'Jost-Semibold';
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 12px;
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 14px;
+    margin-top: 44px;
+}
+
+.section_two-title-analogue {
+    color: #141024;
+    font-size: 2rem;
+    font-family: 'Jost-Semibold';
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 12px;
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 14px;
+    margin-top: 49px;
+}
+
+.wrapper-for-text {
+    line-height: 95%;
+}
+
+.text_about {
+    font-size: 2.4rem;
+    color: white;
+    font-family: 'Jost-Regular';
+    line-height: 160%;
+    margin: 0;
+    margin-left: 8px;
+}
+
+.link-after-text {
+    font-size: 2.4rem;
+    color: white;
+    font-family: 'Jost-Regular';
+    line-height: 160%;
+    margin: 0;
+    margin-left: 8px;
+    text-decoration: underline;
+}
+
+.text_about, .link-after-text {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+@media (max-width:1600px) {
+    .section__wrapper {
+        max-width: 1174px;
+        margin: 0 auto;
+        margin-bottom: 110px;
+        margin-top: 52px;
+    }
+    
+    .section_title {
+        font-size: 4.2rem;
+        margin-bottom: 0;
+    }
+    
+    .section_two-title {
+        font-size: 2rem;
+        font-family: 'Jost-Semibold';
+        padding: 14px;
+        margin-top: 33px;
+    }
+    
+    .section_two-title-analogue {
+
+        font-size: 2rem;
+        font-family: 'Jost-Semibold';
+        padding: 14px;
+        margin-top: 49px;
+    }
+    
+    .text_about {
+        font-size: 2.4rem;
+        margin-left: 8px;
+        font-family: 'Jost-Regular';
+        line-height: 160%;
+    }
+}
