@@ -1,27 +1,33 @@
 const graph = {
-    'toilet': ['corridor-0'],
-    '2705': ['corridor-1'],
-    '2706': ['corridor-2'],
-    'elevator': ['corridor-3'],
-    '2701': ['corridor-4'],
-    '2702': ['corridor-5'],
-    
     'stairs1': ['corridor-0'],
-    'empty1': ['corridor-1'],
-    '2704': ['corridor-2'],
-    '2703': ['corridor-3'],
-    '2712': ['corridor-4'],
-    'stairs2': ['corridor-5'],
-    '2711': ['corridor-6'],
+    '2664': ['corridor-1'],
+    '2663': ['corridor-2'],
+    '2662': ['corridor-3'],
+    '2605': ['corridor-4'],
+    '2606': ['corridor-5'],
+    '2608': ['corridor-6'],
+    'stairs2': ['corridor-7'],
     
-    'corridor-0': ['toilet', 'stairs1', 'corridor-1'],
-    'corridor-1': ['corridor-0', '2705', 'empty1', 'corridor-2'],
-    'corridor-2': ['corridor-1', '2706', '2704', 'corridor-3'],
-    'corridor-3': ['corridor-2', 'elevator', '2703', 'corridor-4'],
-    'corridor-4': ['corridor-3', '2701', '2712', 'corridor-5'],
-    'corridor-5': ['corridor-4', '2702', 'stairs2', 'corridor-6'],
-    'corridor-6': ['corridor-5', '2711']
+    '2666': ['corridor-0'],
+    '2667': ['corridor-1'],
+    '2668': ['corridor-2'],
+    '2669': ['corridor-3'],
+    'elevator': ['corridor-4'],
+    '2611': ['corridor-5'],
+    '2610': ['corridor-6'],
+    '2609': ['corridor-7'],
+    'toilet': ['corridor-7'],
+    
+    'corridor-0': ['stairs1', '2666', 'corridor-1'],
+    'corridor-1': ['corridor-0', '2664', '2667', 'corridor-2'],
+    'corridor-2': ['corridor-1', '2663', '2668', 'corridor-3'],
+    'corridor-3': ['corridor-2', '2662', '2669', 'corridor-4'],
+    'corridor-4': ['corridor-3', '2605', 'elevator', 'corridor-5'],
+    'corridor-5': ['corridor-4', '2606', '2611', 'corridor-6'],
+    'corridor-6': ['corridor-5', '2608', '2610', 'corridor-7'],
+    'corridor-7': ['corridor-6', 'stairs2', '2609', 'toilet']
 };
+
 
 const roomPositions = {};
 let currentPath = [];
@@ -90,19 +96,18 @@ function createSnake() {
         const segment = document.createElement('div');
         segment.className = 'snake';
         
-        // Рассчитываем угол и длину линии
         const dx = next.x - current.x;
         const dy = next.y - current.y;
         const length = Math.sqrt(dx*dx + dy*dy);
         const angle = Math.atan2(dy, dx) * 180 / Math.PI;
         
         segment.style.width = `${length}px`;
-        segment.style.height = '6px'; // Толщина линии
+        segment.style.height = '6px'; 
         segment.style.left = `${current.x}px`;
-        segment.style.top = `${current.y - 3}px`; // Центрируем по вертикали
+        segment.style.top = `${current.y - 3}px`; 
         segment.style.transformOrigin = '0 50%';
         segment.style.transform = `rotate(${angle}deg)`;
-        segment.style.borderRadius = '3px'; // Закругленные края
+        segment.style.borderRadius = '3px'; 
 
         document.getElementById('game-container').appendChild(segment);
         snakeSegments.push(segment);
@@ -117,7 +122,7 @@ function createSnake() {
 }
 
 function animateSnake() {
-    if (currentStep >= currentPath.length * 20) { // Увеличил для плавности
+    if (currentStep >= currentPath.length * 20) { 
         cancelAnimationFrame(animationFrame);
         return;
     }
@@ -137,11 +142,10 @@ function animateSnake() {
         const headX = current.x + (next.x - current.x) * segmentProgress;
         const headY = current.y + (next.y - current.y) * segmentProgress;
         
-        head.style.left = `${headX - 8}px`; // Центрируем голову
+        head.style.left = `${headX - 8}px`; 
         head.style.top = `${headY - 8}px`;
     }
 
-    // Подсветка пройденного пути
     snakeSegments.forEach((seg, i) => {
         if (i < pathIndex) seg.style.opacity = '1';
         else if (i === pathIndex) seg.style.opacity = '0.8';

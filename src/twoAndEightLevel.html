@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эвакуация: Интерактивый план</title>
+    <link rel="stylesheet" href="twoAndEightLevel.css">
+</head>
+<body>
+    <h1>План эвакуации 2/8 этажа</h1>
+    <div class="controls">
+        <select id="room-select">
+            <optgroup label="Верхний ряд">
+                <option value="2201M">2201M/2816Б</option>
+                <option value="2201">2201/2816</option>
+                <option value="2203">2203/2814А</option>
+                <option value="2204">2204/2802</option>
+                <option value="2205">2205/2803</option>
+                <option value="2206">2206/2804</option>
+            </optgroup>
+            <optgroup label="Нижний ряд">
+                <option value="2214">2214/2817А</option>
+                <option value="2210">2210/2815Б</option>
+                <option value="2202B">2202Б/2815А</option>
+                <option value="2202A">2202А/2814</option>
+                <option value="elevator">Лифт</option>
+                <option value="2209">2209/2813</option>
+                <option value="2208A">2208А/2812</option>
+                <option value="2208">2208/2811</option>
+                <option value="2207">2207/2810</option>
+                <option value="toilet">С/у</option>
+            </optgroup>
+        </select>
+        <button id="start-btn">Начать эвакуацию</button>
+        <button id="reset-btn">Сбросить</button>
+    </div>
+
+    <div class="game-container" id="game-container">
+
+        <div class="room exit" style="top: 20px; left: 50px;" data-room="exit1">Выход</div>
+        <div class="room" style="top: 20px; left: 150px;" data-room="2201M">2201M/2816Б</div>
+        <div class="room" style="top: 20px; left: 250px;" data-room="2201">2201/2816</div>
+        <div class="room" style="top: 20px; left: 350px;" data-room="2203">2203/2814А</div>
+        <div class="room" style="top: 20px; left: 450px;" data-room="2204">2204/2802</div>
+        <div class="room" style="top: 20px; left: 550px;" data-room="2205">2205/2803</div>
+        <div class="room" style="top: 20px; left: 650px;" data-room="2206">2206/2804</div>
+        <div class="room exit" style="top: 20px; left: 750px;" data-room="exit2">Выход</div>
+        
+        <div class="corridor" style="top: 170px;">
+            <div class="corridor-segment" data-segment="0"></div>
+            <div class="corridor-segment" data-segment="1"></div>
+            <div class="corridor-segment" data-segment="2"></div>
+            <div class="corridor-segment" data-segment="3"></div>
+            <div class="corridor-segment" data-segment="4"></div>
+            <div class="corridor-segment" data-segment="5"></div>
+        </div>
+        
+        <div class="room" style="top: 300px; left: 50px;" data-room="2214">2214/2817А</div>
+        <div class="room" style="top: 300px; left: 150px;" data-room="2210">2210/2815Б</div>
+        <div class="room" style="top: 300px; left: 250px;" data-room="2202B">2202Б/2815А</div>
+        <div class="room" style="top: 300px; left: 350px;" data-room="2202A">2202А/2814</div>
+        <div class="room elevator" style="top: 300px; left: 450px;" data-room="elevator">Лифт</div>
+        <div class="room" style="top: 300px; left: 550px;" data-room="2209">2209/2813</div>
+        <div class="room" style="top: 300px; left: 650px;" data-room="2208A">2208А/2812</div>
+        <div class="room" style="top: 300px; left: 750px;" data-room="2208">2208/2811</div>
+        <div class="room" style="top: 300px; left: 850px;" data-room="2207">2207/2810</div>
+        <div class="room toilet" style="top: 300px; left: 950px;" data-room="toilet">С/у</div>
+    </div>
+    <div id="info-panel">
+        <p>Выберите аудиторию и нажмите "Начать эвакуацию". Змейка покажет путь к ближайшему выходу.</p>
+        <div id="route-info"></div>
+    </div>
+<script src = 'twoAndEightLevel.js'></script>
+</body>
+</html>

@@ -1,26 +1,31 @@
 const graph = {
-    'toilet': ['corridor-0'],
-    '2705': ['corridor-1'],
-    '2706': ['corridor-2'],
-    'elevator': ['corridor-3'],
-    '2701': ['corridor-4'],
-    '2702': ['corridor-5'],
-    
     'stairs1': ['corridor-0'],
-    'empty1': ['corridor-1'],
-    '2704': ['corridor-2'],
-    '2703': ['corridor-3'],
-    '2712': ['corridor-4'],
-    'stairs2': ['corridor-5'],
-    '2711': ['corridor-6'],
+    '2413': ['corridor-1'],
+    '2412': ['corridor-2'],
+    '2402': ['corridor-3'],
+    '2403': ['corridor-4'],
+    '2404': ['corridor-5'],
+    'stairs2': ['corridor-6'],
     
-    'corridor-0': ['toilet', 'stairs1', 'corridor-1'],
-    'corridor-1': ['corridor-0', '2705', 'empty1', 'corridor-2'],
-    'corridor-2': ['corridor-1', '2706', '2704', 'corridor-3'],
-    'corridor-3': ['corridor-2', 'elevator', '2703', 'corridor-4'],
-    'corridor-4': ['corridor-3', '2701', '2712', 'corridor-5'],
-    'corridor-5': ['corridor-4', '2702', 'stairs2', 'corridor-6'],
-    'corridor-6': ['corridor-5', '2711']
+    '2411': ['corridor-0'],
+    'light1': ['corridor-1'],
+    '2410': ['corridor-2'],
+    '2409': ['corridor-3'],
+    'elevator': ['corridor-4'],
+    '2408': ['corridor-5'],
+    '2407': ['corridor-6'],
+    'light2': ['corridor-6'],
+    '2405': ['corridor-6'],
+    '2406': ['corridor-6'],
+    '2416': ['corridor-6'],
+    
+    'corridor-0': ['stairs1', '2411', 'corridor-1'],
+    'corridor-1': ['corridor-0', '2413', 'light1', 'corridor-2'],
+    'corridor-2': ['corridor-1', '2412', '2410', 'corridor-3'],
+    'corridor-3': ['corridor-2', '2402', '2409', 'corridor-4'],
+    'corridor-4': ['corridor-3', '2403', 'elevator', 'corridor-5'],
+    'corridor-5': ['corridor-4', '2404', '2408', 'corridor-6'],
+    'corridor-6': ['corridor-5', 'stairs2', '2407', 'light2', '2405', '2406', '2416']
 };
 
 const roomPositions = {};
@@ -217,3 +222,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('reset-btn').addEventListener('click', reset);
 });
+

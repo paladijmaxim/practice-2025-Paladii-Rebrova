@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эвакуация: Интерактивный план</title>
+    <link rel="stylesheet" href="fourLevel.css">
+</head>
+<body>
+    <h1>План эвакуации 4 этажа</h1>
+    <div class="controls">
+        <select id="room-select">
+            <option value="">Выберите помещение</option>
+            <optgroup label="Верхний ряд">
+                <option value="stairs1">Лестница</option>
+                <option value="2413">2413</option>
+                <option value="2412">2412</option>
+                <option value="2402">2402</option>
+                <option value="2403">2403</option>
+                <option value="2404">2404</option>
+                <option value="stairs2">Лестница</option>
+            </optgroup>
+            <optgroup label="Нижний ряд">
+                <option value="2411">2411</option>
+                <option value="light1">2-й свет</option>
+                <option value="2410">2410</option>
+                <option value="2409">2409</option>
+                <option value="elevator">Лифт/лестница</option>
+                <option value="2408">2408</option>
+                <option value="2407">2407</option>
+                <option value="light2">2-й свет</option>
+                <option value="2405">2405</option>
+                <option value="2406">2406</option>
+                <option value="2416">2416</option>
+            </optgroup>
+        </select>
+        <button id="start-btn">Начать эвакуацию</button>
+        <button id="reset-btn">Сбросить</button>
+    </div>
+
+    <div class="game-container" id="game-container">
+
+        <div class="room stairs" style="top: 20px; left: 50px;" data-room="stairs1">Лестница</div>
+        <div class="room" style="top: 20px; left: 150px;" data-room="2413">2413</div>
+        <div class="room" style="top: 20px; left: 250px;" data-room="2412">2412</div>
+        <div class="room" style="top: 20px; left: 350px;" data-room="2402">2402</div>
+        <div class="room" style="top: 20px; left: 450px;" data-room="2403">2403</div>
+        <div class="room" style="top: 20px; left: 550px;" data-room="2404">2404</div>
+        <div class="room stairs" style="top: 20px; left: 650px;" data-room="stairs2">Лестница</div>
+
+        <div class="corridor" style="top: 120px;">
+            <div class="corridor-segment" data-segment="0"></div>
+            <div class="corridor-segment" data-segment="1"></div>
+            <div class="corridor-segment" data-segment="2"></div>
+            <div class="corridor-segment" data-segment="3"></div>
+            <div class="corridor-segment" data-segment="4"></div>
+            <div class="corridor-segment" data-segment="5"></div>
+            <div class="corridor-segment" data-segment="6"></div>
+        </div>
+
+        <div class="room" style="top: 220px; left: 50px;" data-room="2411">2411</div>
+        <div class="room light" style="top: 220px; left: 150px;" data-room="light1">2-й свет</div>
+        <div class="room" style="top: 220px; left: 250px;" data-room="2410">2410</div>
+        <div class="room" style="top: 220px; left: 350px;" data-room="2409">2409</div>
+        <div class="room elevator" style="top: 220px; left: 450px;" data-room="elevator">Лифт/лестница</div>
+        <div class="room" style="top: 220px; left: 550px;" data-room="2408">2408</div>
+        <div class="room" style="top: 220px; left: 650px;" data-room="2407">2407</div>
+        <div class="room light" style="top: 220px; left: 750px;" data-room="light2">2-й свет</div>
+        <div class="room" style="top: 220px; left: 850px;" data-room="2405">2405</div>
+        <div class="room" style="top: 220px; left: 950px;" data-room="2406">2406</div>
+        <div class="room" style="top: 220px; left: 1050px;" data-room="2416">2416</div>
+    </div>
+    <div id="info-panel">
+        <p>Выберите аудиторию и нажмите "Начать эвакуацию". Змейка покажет путь к ближайшему выходу.</p>
+        <div id="route-info"></div>
+    </div>
+    <script src="fourLevel.js"></script>
+</body>
+</html>

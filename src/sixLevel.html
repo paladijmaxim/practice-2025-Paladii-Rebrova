@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эвакуация: Интерактивный план</title>
+    <link rel="stylesheet" href="sixLevel.css">
+</head>
+<body>
+    <h1>План эвакуации 6 этажа</h1>
+    <div class="controls">
+        <select id="room-select">
+            <option value="">Выберите помещение</option>
+            <optgroup label="Верхний ряд">
+                <option value="stairs1">Лестница</option>
+                <option value="2664">2664</option>
+                <option value="2663">2663</option>
+                <option value="2662">2662</option>
+                <option value="2605">2605</option>
+                <option value="2606">2606</option>
+                <option value="2608">2608</option>
+                <option value="stairs2">Лестница</option>
+            </optgroup>
+            <optgroup label="Нижний ряд">
+                <option value="2666">2666</option>
+                <option value="2667">2667</option>
+                <option value="2668">2668</option>
+                <option value="2669">2669</option>
+                <option value="elevator">Лифт/лестница</option>
+                <option value="2611">2611</option>
+                <option value="2610">2610</option>
+                <option value="2609">2609</option>
+                <option value="toilet">С/у</option>
+            </optgroup>
+        </select>
+        <button id="start-btn">Начать эвакуацию</button>
+        <button id="reset-btn">Сбросить</button>
+    </div>
+
+    <div class="game-container" id="game-container">
+        <div class="room stairs" style="top: 20px; left: 50px;" data-room="stairs1">Лестница</div>
+        <div class="room" style="top: 20px; left: 150px;" data-room="2664">2664</div>
+        <div class="room" style="top: 20px; left: 250px;" data-room="2663">2663</div>
+        <div class="room" style="top: 20px; left: 350px;" data-room="2662">2662</div>
+        <div class="room" style="top: 20px; left: 450px;" data-room="2605">2605</div>
+        <div class="room" style="top: 20px; left: 550px;" data-room="2606">2606</div>
+        <div class="room" style="top: 20px; left: 650px;" data-room="2608">2608</div>
+        <div class="room stairs" style="top: 20px; left: 750px;" data-room="stairs2">Лестница</div>
+        
+        <div class="corridor" style="top: 120px;">
+            <div class="corridor-segment" data-segment="0"></div>
+            <div class="corridor-segment" data-segment="1"></div>
+            <div class="corridor-segment" data-segment="2"></div>
+            <div class="corridor-segment" data-segment="3"></div>
+            <div class="corridor-segment" data-segment="4"></div>
+            <div class="corridor-segment" data-segment="5"></div>
+            <div class="corridor-segment" data-segment="6"></div>
+            <div class="corridor-segment" data-segment="7"></div>
+        </div>
+        
+        <div class="room" style="top: 220px; left: 50px;" data-room="2666">2666</div>
+        <div class="room" style="top: 220px; left: 150px;" data-room="2667">2667</div>
+        <div class="room" style="top: 220px; left: 250px;" data-room="2668">2668</div>
+        <div class="room" style="top: 220px; left: 350px;" data-room="2669">2669</div>
+        <div class="room elevator" style="top: 220px; left: 450px;" data-room="elevator">Лифт/лестница</div>
+        <div class="room" style="top: 220px; left: 550px;" data-room="2611">2611</div>
+        <div class="room" style="top: 220px; left: 650px;" data-room="2610">2610</div>
+        <div class="room" style="top: 220px; left: 750px;" data-room="2609">2609</div>
+        <div class="room toilet" style="top: 220px; left: 850px;" data-room="toilet">С/у</div>
+    </div>
+    <div id="info-panel">
+        <p>Выберите аудиторию и нажмите "Начать эвакуацию". Змейка покажет путь к ближайшему выходу.</p>
+        <div id="route-info"></div>
+    </div>
+    <script src="sixLevel.js"></script>
+</body>
+</html>

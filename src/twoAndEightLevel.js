@@ -69,13 +69,14 @@ function findShortestPath(start, end) {
 }
 
 function buildEvacuationPath(start) {
-    const pathToExit1 = findShortestPath(start, 'exit1');
-    const pathToExit2 = findShortestPath(start, 'exit2');
+    const exits = ['stairs1', 'stairs2', 'elevator'];
+    const paths = exits.map(exit => findShortestPath(start, exit)).filter(p => p);
     
-    if (!pathToExit1) return pathToExit2;
-    if (!pathToExit2) return pathToExit1;
+    if (paths.length === 0) return null;
     
-    return pathToExit1.length <= pathToExit2.length ? pathToExit1 : pathToExit2;
+    return paths.reduce((shortest, current) => 
+        current.length < shortest.length ? current : shortest
+    );
 }
 
 function createSnake() {
@@ -91,17 +92,18 @@ function createSnake() {
         const segment = document.createElement('div');
         segment.className = 'snake';
         
-        if (Math.abs(next.y - current.y) < 10) {
-            segment.style.width = `${Math.abs(next.x - current.x)}px`;
-            segment.style.height = '10px';
-            segment.style.left = `${Math.min(current.x, next.x)}px`;
-            segment.style.top = `${current.y - 5}px`;
-        } else {
-            segment.style.width = '10px';
-            segment.style.height = `${Math.abs(next.y - current.y)}px`;
-            segment.style.left = `${current.x - 5}px`;
-            segment.style.top = `${Math.min(current.y, next.y)}px`;
-        }
+        const dx = next.x - current.x;
+        const dy = next.y - current.y;
+        const length = Math.sqrt(dx*dx + dy*dy);
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        
+        segment.style.width = `${length}px`;
+        segment.style.height = '6px'; 
+        segment.style.left = `${current.x}px`;
+        segment.style.top = `${current.y - 3}px`; 
+        segment.style.transformOrigin = '0 50%';
+        segment.style.transform = `rotate(${angle}deg)`;
+        segment.style.borderRadius = '3px'; 
 
         document.getElementById('game-container').appendChild(segment);
         snakeSegments.push(segment);
@@ -109,18 +111,23 @@ function createSnake() {
 
     const head = document.createElement('div');
     head.className = 'snake-head';
+    head.style.width = '16px';
+    head.style.height = '16px';
     document.getElementById('game-container').appendChild(head);
     snakeSegments.push(head);
 }
 
 function animateSnake() {
-    if (currentStep >= currentPath.length * 10) {
+    if (currentStep >= currentPath.length * 20) { 
         cancelAnimationFrame(animationFrame);
         return;
     }
 
-    const progress = currentStep / (currentPath.length * 10);
-    const pathIndex = Math.floor(progress * (currentPath.length - 1));
+    const progress = currentStep / (currentPath.length * 20);
+    const pathIndex = Math.min(
+        Math.floor(progress * (currentPath.length - 1)),
+        currentPath.length - 2
+    );
     const segmentProgress = (progress * (currentPath.length - 1)) % 1;
 
     const current = roomPositions[currentPath[pathIndex]];
@@ -128,23 +135,31 @@ function animateSnake() {
     
     if (current && next) {
         const head = snakeSegments[snakeSegments.length - 1];
-        head.style.left = `${current.x + (next.x - current.x) * segmentProgress - 7.5}px`;
-        head.style.top = `${current.y + (next.y - current.y) * segmentProgress - 7.5}px`;
+        const headX = current.x + (next.x - current.x) * segmentProgress;
+        const headY = current.y + (next.y - current.y) * segmentProgress;
+        
+        head.style.left = `${headX - 8}px`; 
+        head.style.top = `${headY - 8}px`;
     }
 
-    // Подсветка пройденного пути
-    for (let i = 0; i < snakeSegments.length - 1; i++) {
-        if (i < pathIndex) {
-            snakeSegments[i].style.opacity = '1';
-        }
-    }
+    snakeSegments.forEach((seg, i) => {
+        if (i < pathIndex) seg.style.opacity = '1';
+        else if (i === pathIndex) seg.style.opacity = '0.8';
+        else seg.style.opacity = '0.5';
+    });
 
     currentStep++;
     animationFrame = requestAnimationFrame(animateSnake);
 }
 
 function showRouteInfo() {
-    const exit = currentPath[currentPath.length - 1] === 'exit1' ? 'левому выходу' : 'правому выходу';
+    const exitNames = {
+        'stairs1': 'Левая лестница',
+        'stairs2': 'Правая лестница',
+        'elevator': 'Центральные лестница/лифт'
+    };
+    
+    const exit = exitNames[currentPath[currentPath.length - 1]] || currentPath[currentPath.length - 1];
     document.getElementById('route-info').innerHTML = `
         <h3>Маршрут эвакуации:</h3>
         <p>От: <strong>${selectedRoom}</strong></p>
@@ -175,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    document.querySelectorAll('.room:not(.exit)').forEach(room => {
+    document.querySelectorAll('.room').forEach(room => {
         room.addEventListener('click', function() {
             reset();
             selectedRoom = this.dataset.room;
@@ -186,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('start-btn').addEventListener('click', function() {
         if (!selectedRoom) {
-            alert('Выберите аудиторию для начала эвакуации');
+            alert('Выберите помещение для начала эвакуации');
             return;
         }
 

@@ -1,27 +1,34 @@
 const graph = {
-    'toilet': ['corridor-0'],
-    '2705': ['corridor-1'],
-    '2706': ['corridor-2'],
-    'elevator': ['corridor-3'],
-    '2701': ['corridor-4'],
-    '2702': ['corridor-5'],
-    
     'stairs1': ['corridor-0'],
-    'empty1': ['corridor-1'],
-    '2704': ['corridor-2'],
-    '2703': ['corridor-3'],
-    '2712': ['corridor-4'],
-    'stairs2': ['corridor-5'],
-    '2711': ['corridor-6'],
-    
-    'corridor-0': ['toilet', 'stairs1', 'corridor-1'],
-    'corridor-1': ['corridor-0', '2705', 'empty1', 'corridor-2'],
-    'corridor-2': ['corridor-1', '2706', '2704', 'corridor-3'],
-    'corridor-3': ['corridor-2', 'elevator', '2703', 'corridor-4'],
-    'corridor-4': ['corridor-3', '2701', '2712', 'corridor-5'],
-    'corridor-5': ['corridor-4', '2702', 'stairs2', 'corridor-6'],
-    'corridor-6': ['corridor-5', '2711']
+    '2505': ['corridor-1'],
+    '2506': ['corridor-2'],
+    '2507': ['corridor-3'],
+    '2559': ['corridor-4'],
+    '2558': ['corridor-5'],
+    '2557': ['corridor-6'],
+    'stairs2': ['corridor-7'],
+
+    '2504': ['corridor-0'],
+    '2503': ['corridor-1'],
+    '2502': ['corridor-2'],
+    '2501': ['corridor-3'],
+    'elevator': ['corridor-4'],
+    '2552': ['corridor-5'],
+    '2553': ['corridor-6'],
+    '2554': ['corridor-7'],
+    '2555': ['corridor-7'],
+    'toilet': ['corridor-7'],
+
+    'corridor-0': ['stairs1', '2504', 'corridor-1'],
+    'corridor-1': ['corridor-0', '2505', '2503', 'corridor-2'],
+    'corridor-2': ['corridor-1', '2506', '2502', 'corridor-3'],
+    'corridor-3': ['corridor-2', '2507', '2501', 'corridor-4'],
+    'corridor-4': ['corridor-3', '2559', 'elevator', 'corridor-5'],
+    'corridor-5': ['corridor-4', '2558', '2552', 'corridor-6'],
+    'corridor-6': ['corridor-5', '2557', '2553', 'corridor-7'],
+    'corridor-7': ['corridor-6', 'stairs2', '2554', '2555', 'toilet']
 };
+
 
 const roomPositions = {};
 let currentPath = [];
@@ -217,3 +224,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('reset-btn').addEventListener('click', reset);
 });
+

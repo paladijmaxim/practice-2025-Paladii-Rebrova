@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эвакуация: Интерактивный план</title>
+    <link rel="stylesheet" href="fiveLevel.css">
+</head>
+<body>
+    <h1>План эвакуации 5 этажа</h1>
+    <div class="controls">
+        <select id="room-select">
+            <option value="">Выберите помещение</option>
+            <optgroup label="Верхний ряд">
+                <option value="stairs1">Лестница</option>
+                <option value="2505">2505</option>
+                <option value="2506">2506</option>
+                <option value="2507">2507</option>
+                <option value="2559">2559</option>
+                <option value="2558">2558</option>
+                <option value="2557">2557</option>
+                <option value="stairs2">Лестница</option>
+            </optgroup>
+            <optgroup label="Нижний ряд">
+                <option value="2504">2504</option>
+                <option value="2503">2503</option>
+                <option value="2502">2502</option>
+                <option value="2501">2501</option>
+                <option value="elevator">Лифт/лестница</option>
+                <option value="2552">2552</option>
+                <option value="2553">2553</option>
+                <option value="2554">2554</option>
+                <option value="2555">2555</option>
+                <option value="toilet">С/у</option>
+            </optgroup>
+        </select>
+        <button id="start-btn">Начать эвакуацию</button>
+        <button id="reset-btn">Сбросить</button>
+    </div>
+
+    <div class="game-container" id="game-container">
+
+        <div class="room stairs" style="top: 20px; left: 50px;" data-room="stairs1">Лестница</div>
+        <div class="room" style="top: 20px; left: 150px;" data-room="2505">2505</div>
+        <div class="room" style="top: 20px; left: 250px;" data-room="2506">2506</div>
+        <div class="room" style="top: 20px; left: 350px;" data-room="2507">2507</div>
+        <div class="room" style="top: 20px; left: 450px;" data-room="2559">2559</div>
+        <div class="room" style="top: 20px; left: 550px;" data-room="2558">2558</div>
+        <div class="room" style="top: 20px; left: 650px;" data-room="2557">2557</div>
+        <div class="room stairs" style="top: 20px; left: 750px;" data-room="stairs2">Лестница</div>
+    
+        <div class="corridor" style="top: 120px;">
+            <div class="corridor-segment" data-segment="0"></div>
+            <div class="corridor-segment" data-segment="1"></div>
+            <div class="corridor-segment" data-segment="2"></div>
+            <div class="corridor-segment" data-segment="3"></div>
+            <div class="corridor-segment" data-segment="4"></div>
+            <div class="corridor-segment" data-segment="5"></div>
+            <div class="corridor-segment" data-segment="6"></div>
+            <div class="corridor-segment" data-segment="7"></div>
+        </div>
+        
+        <div class="room" style="top: 220px; left: 50px;" data-room="2504">2504</div>
+        <div class="room" style="top: 220px; left: 150px;" data-room="2503">2503</div>
+        <div class="room" style="top: 220px; left: 250px;" data-room="2502">2502</div>
+        <div class="room" style="top: 220px; left: 350px;" data-room="2501">2501</div>
+        <div class="room elevator" style="top: 220px; left: 450px;" data-room="elevator">Лифт/лестница</div>
+        <div class="room" style="top: 220px; left: 550px;" data-room="2552">2552</div>
+        <div class="room" style="top: 220px; left: 650px;" data-room="2553">2553</div>
+        <div class="room" style="top: 220px; left: 750px;" data-room="2554">2554</div>
+        <div class="room" style="top: 220px; left: 850px;" data-room="2555">2555</div>
+        <div class="room toilet" style="top: 220px; left: 950px;" data-room="toilet">С/у</div>
+    </div>
+    <div id="info-panel">
+        <p>Выберите аудиторию и нажмите "Начать эвакуацию". Змейка покажет путь к ближайшему выходу.</p>
+        <div id="route-info"></div>
+    </div>
+    <script src="fiveLevel.js"></script>
+</body>
+</html>
