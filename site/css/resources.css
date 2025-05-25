@@ -67,6 +67,10 @@
     overflow-wrap: break-word;
 }
 
+.pdf-element {
+    margin: 0 auto;
+}
+
 @media (max-width:1600px) {
     .section__wrapper {
         max-width: 1174px;
